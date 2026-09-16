@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard - Learning with Kawsar</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+    color:#1e293b;
+}
+
+/* HEADER */
+
+header{
+    background:#0f172a;
+    color:white;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+header h1{
+    font-size:24px;
+}
+
+.header-buttons{
+    display:flex;
+    gap:8px;
+}
+
+button{
+    border:none;
+    padding:10px 15px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.home-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.logout-btn{
+    background:#dc2626;
+    color:white;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1250px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+/* WELCOME */
+
+.welcome{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.welcome h2{
+    margin-bottom:7px;
+}
+
+/* STATISTICS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.stat h3{
+    font-size:30px;
+    margin-bottom:5px;
+}
+
+.stat p{
+    color:#64748b;
+}
+
+/* NAVIGATION */
+
+.admin-nav{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.nav-btn{
+    background:#334155;
+    color:white;
+}
+
+.nav-btn.active{
+    background:#2563eb;
+}
+
+/* SECTION */
+
+.section{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:25px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.section h2{
+    margin-bottom:15px;
+}
+
+/* FORM */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.form-group{
+    margin-bottom:12px;
+}
+
+.form-group.full{
+    grid-column:1 / -1;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:11px;
+    border:1px solid #cbd5e1;
+    border-radius:7px;
+    font-size:15px;
+}
+
+textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+.submit-btn{
+    background:#16a34a;
+    color:white;
+}
+
+.cancel-btn{
+    background:#64748b;
+    color:white;
+}
+
+/* SEARCH */
+
+.search-box{
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:7px;
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+/* TABLE */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:800px;
+}
+
+th,
+td{
+    padding:12px;
+    border-bottom:1px solid #e2e8f0;
+    text-align:left;
+}
+
+th{
+    background:#f8fafc;
+}
+
+tr:hover{
+    background:#f8fafc;
+}
+
+/* ACTION BUTTONS */
+
+.view-btn{
+    background:#16a34a;
+    color:white;
+    margin-right:5px;
+}
+
+.edit-btn{
+    background:#2563eb;
+    color:white;
+    margin-right:5px;
+}
+
+.delete-btn{
+    background:#dc2626;
+    color:white;
+}
+
+/* CATEGORY STATS */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:15px;
+}
+
+.category-card{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    padding:18px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.category-card h3{
+    font-size:25px;
+    margin-bottom:5px;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    justify-content:center;
+    align-items:center;
+    padding:15px;
+    z-index:1000;
+}
+
+.modal-content{
+    background:white;
+    width:100%;
+    max-width:700px;
+    max-height:85vh;
+    overflow-y:auto;
+    border-radius:12px;
+    padding:25px;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.close-btn{
+    background:#64748b;
+    color:white;
+}
+
+.student-info{
+    background:#f8fafc;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+.history-item{
+    border:1px solid #e2e8f0;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:10px;
+}
+
+.history-item strong{
+    display:inline-block;
+    min-width:110px;
+}
+
+.empty{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+}
+
+/* HIDDEN */
+
+.hidden{
+    display:none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <h1>🎓 Learning with Kawsar</h1>
+
+    <div class="header-buttons">
+
+        <button class="home-btn" onclick="goHome()">
+            🏠 Home
+        </button>
+
+        <button class="logout-btn" onclick="adminLogout()">
+            🚪 Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+
+    <!-- WELCOME -->
+
+    <div class="welcome">
+
+        <h2>👨‍💼 Admin Dashboard</h2>
+
+        <p>
+            এখান থেকে Student এবং MCQ Question Management
+            করতে পারবে।
+        </p>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <h3 id="totalStudents">0</h3>
+
+            <p>👨‍🎓 Total Students</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3 id="totalAttempts">0</h3>
+
+            <p>📝 Quiz Attempts</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3 id="totalQuestionsAnswered">0</h3>
+
+            <p>❓ Questions Answered</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3 id="averageScore">0%</h3>
+
+            <p>📊 Average Score</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="admin-nav">
+
+        <button
+            class="nav-btn active"
+            id="studentNav"
+            onclick="showSection('students')"
+        >
+            👨‍🎓 Students
+        </button>
+
+
+        <button
+            class="nav-btn"
+            id="questionNav"
+            onclick="showSection('questions')"
+        >
+            📝 Questions
+        </button>
+
+
+        <button
+            class="nav-btn"
+            id="statsNav"
+            onclick="showSection('statistics')"
+        >
+            📊 Statistics
+        </button>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- STUDENT SECTION -->
+    <!-- ========================= -->
+
+    <div id="studentsSection">
+
+        <div class="section">
+
+            <h2>👨‍🎓 Registered Students</h2>
+
+            <input
+                type="text"
+                id="searchStudent"
+                class="search-box"
+                placeholder="🔎 Search by name, username or email..."
+                oninput="displayStudents()"
+            >
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Name</th>
+
+                            <th>Username</th>
+
+                            <th>Email</th>
+
+                            <th>Quiz</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentTable"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- QUESTION SECTION -->
+    <!-- ========================= -->
+
+    <div id="questionsSection" class="hidden">
+
+
+        <!-- ADD / EDIT FORM -->
+
+        <div class="section">
+
+            <h2 id="questionFormTitle">
+                ➕ Add New MCQ
+            </h2>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>Category</label>
+
+                    <select id="questionCategory">
+
+                        <option value="ICT">
+                            ICT
+                        </option>
+
+                        <option value="GK">
+                            General Knowledge
+                        </option>
+
+                        <option value="Science">
+                            Science
+                        </option>
+
+                        <option value="Bangladesh">
+                            Bangladesh
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Correct Answer</label>
+
+                    <select id="correctAnswer">
+
+                        <option value="0">
+                            Option 1
+                        </option>
+
+                        <option value="1">
+                            Option 2
+                        </option>
+
+                        <option value="2">
+                            Option 3
+                        </option>
+
+                        <option value="3">
+                            Option 4
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Question
+                    </label>
+
+                    <textarea
+                        id="questionText"
+                        placeholder="Write your MCQ question..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Option 1</label>
+
+                    <input
+                        type="text"
+                        id="option1"
+                        placeholder="Option 1"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Option 2</label>
+
+                    <input
+                        type="text"
+                        id="option2"
+                        placeholder="Option 2"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Option 3</label>
+
+                    <input
+                        type="text"
+                        id="option3"
+                        placeholder="Option 3"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Option 4</label>
+
+                    <input
+                        type="text"
+                        id="option4"
+                        placeholder="Option 4"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="submit-btn"
+                id="saveQuestionBtn"
+                onclick="saveQuestion()"
+            >
+                ➕ Add Question
+            </button>
+
+
+            <button
+                class="cancel-btn hidden"
+                id="cancelEditBtn"
+                onclick="cancelEdit()"
+            >
+                Cancel Edit
+            </button>
+
+        </div>
+
+
+        <!-- QUESTION LIST -->
+
+        <div class="section">
+
+            <h2>📚 Question Bank</h2>
+
+
+            <input
+                type="text"
+                id="searchQuestion"
+                class="search-box"
+                placeholder="🔎 Search question..."
+                oninput="displayQuestions()"
+            >
+
+
+            <select
+                id="filterCategory"
+                class="search-box"
+                onchange="displayQuestions()"
+            >
+
+                <option value="All">
+                    📚 All Categories
+                </option>
+
+                <option value="ICT">
+                    💻 ICT
+                </option>
+
+                <option value="GK">
+                    🌍 General Knowledge
+                </option>
+
+                <option value="Science">
+                    🔬 Science
+                </option>
+
+                <option value="Bangladesh">
+                    🇧🇩 Bangladesh
+                </option>
+
+            </select>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Category</th>
+
+                            <th>Question</th>
+
+                            <th>Correct Answer</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="questionTable"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- STATISTICS SECTION -->
+    <!-- ========================= -->
+
+    <div id="statisticsSection" class="hidden">
+
+
+        <div class="section">
+
+            <h2>📊 Question Statistics</h2>
+
+
+            <div class="category-grid">
+
+
+                <div class="category-card">
+
+                    <h3 id="ictCount">0</h3>
+
+                    <p>💻 ICT Questions</p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3 id="gkCount">0</h3>
+
+                    <p>🌍 GK Questions</p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3 id="scienceCount">0</h3>
+
+                    <p>🔬 Science Questions</p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3 id="bdCount">0</h3>
+
+                    <p>🇧🇩 Bangladesh Questions</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>📈 Student Quiz Performance</h2>
+
+            <div id="performanceBox"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- STUDENT MODAL -->
+<!-- ========================= -->
+
+<div class="modal" id="studentModal">
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <h2>👤 Student Details</h2>
+
+            <button
+                class="close-btn"
+                onclick="closeModal()"
+            >
+                ✕ Close
+            </button>
+
+        </div>
+
+
+        <div id="studentDetails"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+// =======================================
+// ADMIN SECURITY
+// =======================================
+
+if(
+    localStorage.getItem("adminLoggedIn")
+    !==
+    "true"
+){
+
+    window.location.href =
+        "admin-login.html";
+
+}
+
+
+// =======================================
+// GET USERS
+// =======================================
+
+function getUsers(){
+
+    return JSON.parse(
+        localStorage.getItem("users")
+        ||
+        "[]"
+    );
+
+}
+
+
+// =======================================
+// GET CUSTOM QUESTIONS
+// =======================================
+
+function getQuestions(){
+
+    return JSON.parse(
+        localStorage.getItem("customQuestions")
+        ||
+        "[]"
+    );
+
+}
+
+
+// =======================================
+// SAVE CUSTOM QUESTIONS
+// =======================================
+
+function saveQuestions(questions){
+
+    localStorage.setItem(
+        "customQuestions",
+        JSON.stringify(questions)
+    );
+
+}
+
+
+// =======================================
+// STUDENT HISTORY
+// =======================================
+
+function getStudentHistory(username){
+
+    return JSON.parse(
+        localStorage.getItem(
+            "quizHistory_" + username
+        )
+        ||
+        "[]"
+    );
+
+}
+
+
+// =======================================
+// SHOW SECTION
+// =======================================
+
+function showSection(section){
+
+    document
+        .getElementById("studentsSection")
+        .classList.add("hidden");
+
+    document
+        .getElementById("questionsSection")
+        .classList.add("hidden");
+
+    document
+        .getElementById("statisticsSection")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("studentNav")
+        .classList.remove("active");
+
+    document
+        .getElementById("questionNav")
+        .classList.remove("active");
+
+    document
+        .getElementById("statsNav")
+        .classList.remove("active");
+
+
+    if(section === "students"){
+
+        document
+            .getElementById("studentsSection")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("studentNav")
+            .classList.add("active");
+
+    }
+
+
+    if(section === "questions"){
+
+        document
+            .getElementById("questionsSection")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("questionNav")
+            .classList.add("active");
+
+        displayQuestions();
+
+    }
+
+
+    if(section === "statistics"){
+
+        document
+            .getElementById("statisticsSection")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("statsNav")
+            .classList.add("active");
+
+        displayQuestionStatistics();
+
+        displayPerformance();
+
+    }
+
+}
+
+
+// =======================================
+// DASHBOARD STATISTICS
+// =======================================
+
+function displayStatistics(){
+
+    const users =
+        getUsers();
+
+    let totalAttempts = 0;
+
+    let totalQuestions = 0;
+
+    let totalCorrect = 0;
+
+
+    users.forEach(user => {
+
+        const history =
+            getStudentHistory(
+                user.username
+            );
+
+
+        totalAttempts +=
+            history.length;
+
+
+        history.forEach(item => {
+
+            totalQuestions +=
+                Number(item.total)
+                ||
+                0;
+
+            totalCorrect +=
+                Number(item.correct)
+                ||
+                0;
+
+        });
+
+    });
+
+
+    let average = 0;
+
+
+    if(totalQuestions > 0){
+
+        average =
+            Math.round(
+                (
+                    totalCorrect
+                    /
+                    totalQuestions
+                )
+                *
+                100
+            );
+
+    }
+
+
+    document
+        .getElementById("totalStudents")
+        .textContent =
+        users.length;
+
+
+    document
+        .getElementById("totalAttempts")
+        .textContent =
+        totalAttempts;
+
+
+    document
+        .getElementById("totalQuestionsAnswered")
+        .textContent =
+        totalQuestions;
+
+
+    document
+        .getElementById("averageScore")
+        .textContent =
+        average + "%";
+
+}
+
+
+// =======================================
+// STUDENTS
+// =======================================
+
+function displayStudents(){
+
+    const users =
+        getUsers();
+
+
+    const search =
+        document
+        .getElementById("searchStudent")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const table =
+        document
+        .getElementById("studentTable");
+
+
+    table.innerHTML = "";
+
+
+    const filtered =
+        users.filter(user => {
+
+            return (
+
+                (user.name || "")
+                .toLowerCase()
+                .includes(search)
+
+                ||
+
+                (user.username || "")
+                .toLowerCase()
+                .includes(search)
+
+                ||
+
+                (user.email || "")
+                .toLowerCase()
+                .includes(search)
+
+            );
+
+        });
+
+
+    if(filtered.length === 0){
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    class="empty"
+                >
+                    কোনো student পাওয়া যায়নি।
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    filtered.forEach((user,index) => {
+
+        const history =
+            getStudentHistory(
+                user.username
+            );
+
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td>
+                ${index + 1}
+            </td>
+
+            <td>
+                ${escapeHTML(
+                    user.name || "N/A"
+                )}
+            </td>
+
+            <td>
+                ${escapeHTML(
+                    user.username || "N/A"
+                )}
+            </td>
+
+            <td>
+                ${escapeHTML(
+                    user.email || "N/A"
+                )}
+            </td>
+
+            <td>
+                ${history.length}
+            </td>
+
+            <td>
+
+                <button
+                    class="view-btn"
+                    onclick="viewStudent(
+                        '${escapeJS(user.username)}'
+                    )"
+                >
+                    👁 View
+                </button>
+
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteStudent(
+                        '${escapeJS(user.username)}'
+                    )"
+                >
+                    🗑 Delete
+                </button>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+// =======================================
+// VIEW STUDENT
+// =======================================
+
+function viewStudent(username){
+
+    const users =
+        getUsers();
+
+
+    const user =
+        users.find(
+            item =>
+            item.username === username
+        );
+
+
+    if(!user){
+
+        alert(
+            "Student পাওয়া যায়নি।"
+        );
+
+        return;
+
+    }
+
+
+    const history =
+        getStudentHistory(username);
+
+
+    let html = `
+
+        <div class="student-info">
+
+            <p>
+                <strong>Name:</strong>
+                ${escapeHTML(
+                    user.name || "N/A"
+                )}
+            </p>
+
+            <p>
+                <strong>Username:</strong>
+                ${escapeHTML(
+                    user.username || "N/A"
+                )}
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                ${escapeHTML(
+                    user.email || "N/A"
+                )}
+            </p>
+
+        </div>
+
+        <h3>📊 Quiz History</h3>
+
+        <br>
+
+    `;
+
+
+    if(history.length === 0){
+
+        html += `
+
+            <div class="empty">
+                এই student এখনো কোনো quiz দেয়নি।
+            </div>
+
+        `;
+
+    }
+    else{
+
+        history
+        .slice()
+        .reverse()
+        .forEach(item => {
+
+            html += `
+
+                <div class="history-item">
+
+                    <p>
+                        <strong>Category:</strong>
+                        ${escapeHTML(
+                            item.category || "N/A"
+                        )}
+                    </p>
+
+                    <p>
+                        <strong>Total:</strong>
+                        ${item.total || 0}
+                    </p>
+
+                    <p>
+                        <strong>Correct:</strong>
+                        ${item.correct || 0}
+                    </p>
+
+                    <p>
+                        <strong>Wrong:</strong>
+                        ${item.wrong || 0}
+                    </p>
+
+                    <p>
+                        <strong>Score:</strong>
+                        ${item.percentage || 0}%
+                    </p>
+
+                    <p>
+                        <strong>Date:</strong>
+                        ${escapeHTML(
+                            item.date || "N/A"
+                        )}
+                    </p>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+
+    document
+        .getElementById("studentDetails")
+        .innerHTML =
+        html;
+
+
+    document
+        .getElementById("studentModal")
+        .style.display =
+        "flex";
+
+}
+
+
+// =======================================
+// CLOSE MODAL
+// =======================================
+
+function closeModal(){
+
+    document
+        .getElementById("studentModal")
+        .style.display =
+        "none";
+
+}
+
+
+// =======================================
+// DELETE STUDENT
+// =======================================
+
+function deleteStudent(username){
+
+    const users =
+        getUsers();
+
+
+    const user =
+        users.find(
+            item =>
+            item.username === username
+        );
+
+
+    if(!user){
+
+        alert(
+            "Student পাওয়া যায়নি।"
+        );
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "এই student account delete করতে চাও?\n\n" +
+            "Name: " +
+            (user.name || "") +
+            "\nUsername: " +
+            username +
+            "\n\nQuiz history-ও delete হবে।"
+        );
+
+
+    if(!confirmDelete){
+
+        return;
+
+    }
+
+
+    const updatedUsers =
+        users.filter(
+            item =>
+            item.username !== username
+        );
+
+
+    localStorage.setItem(
+        "users",
+        JSON.stringify(updatedUsers)
+    );
+
+
+    localStorage.removeItem(
+        "quizHistory_" + username
+    );
+
+
+    alert(
+        "Student successfully deleted."
+    );
+
+
+    displayStudents();
+
+    displayStatistics();
+
+}
+
+
+// =======================================
+// ADD / EDIT QUESTION
+// =======================================
+
+let editingQuestionId = null;
+
+
+function saveQuestion(){
+
+    const category =
+        document
+        .getElementById("questionCategory")
+        .value;
+
+
+    const question =
+        document
+        .getElementById("questionText")
+        .value
+        .trim();
+
+
+    const option1 =
+        document
+        .getElementById("option1")
+        .value
+        .trim();
+
+
+    const option2 =
+        document
+        .getElementById("option2")
+        .value
+        .trim();
+
+
+    const option3 =
+        document
+        .getElementById("option3")
+        .value
+        .trim();
+
+
+    const option4 =
+        document
+        .getElementById("option4")
+        .value
+        .trim();
+
+
+    const answer =
+        Number(
+            document
+            .getElementById("correctAnswer")
+            .value
+        );
+
+
+    if(
+        !question ||
+        !option1 ||
+        !option2 ||
+        !option3 ||
+        !option4
+    ){
+
+        alert(
+            "সবগুলো ঘর পূরণ করো।"
+        );
+
+        return;
+
+    }
+
+
+    const questions =
+        getQuestions();
+
+
+    const questionObject = {
+
+        id:
+            editingQuestionId
+            ||
+            Date.now(),
+
+        category:
+            category,
+
+        q:
+            question,
+
+        o:[
+            option1,
+            option2,
+            option3,
+            option4
+        ],
+
+        a:
+            answer
+
+    };
+
+
+    if(editingQuestionId){
+
+        const index =
+            questions.findIndex(
+                item =>
+                item.id === editingQuestionId
+            );
+
+
+        if(index !== -1){
+
+            questions[index] =
+                questionObject;
+
+        }
+
+    }
+    else{
+
+        questions.push(
+            questionObject
+        );
+
+    }
+
+
+    saveQuestions(questions);
+
+
+    if(editingQuestionId){
+
+        alert(
+            "Question successfully updated."
+        );
+
+    }
+    else{
+
+        alert(
+            "Question successfully added."
+        );
+
+    }
+
+
+    cancelEdit();
+
+    displayQuestions();
+
+    displayQuestionStatistics();
+
+}
+
+
+// =======================================
+// DISPLAY QUESTIONS
+// =======================================
+
+function displayQuestions(){
+
+    const questions =
+        getQuestions();
+
+
+    const search =
+        document
+        .getElementById("searchQuestion")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const category =
+        document
+        .getElementById("filterCategory")
+        .value;
+
+
+    const table =
+        document
+        .getElementById("questionTable");
+
+
+    table.innerHTML = "";
+
+
+    const filtered =
+        questions.filter(item => {
+
+            const matchSearch =
+                (item.q || "")
+                .toLowerCase()
+                .includes(search);
+
+
+            const matchCategory =
+                category === "All"
+                ||
+                item.category === category;
+
+
+            return (
+                matchSearch
+                &&
+                matchCategory
+            );
+
+        });
+
+
+    if(filtered.length === 0){
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="5"
+                    class="empty"
+                >
+                    কোনো custom question পাওয়া যায়নি।
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    filtered.forEach((item,index) => {
+
+        const row =
+            document.createElement("tr");
+
+
+        const correct =
+            item.o &&
+            item.o[item.a]
+            ?
+            item.o[item.a]
+            :
+            "N/A";
+
+
+        row.innerHTML = `
+
+            <td>
+                ${index + 1}
+            </td>
+
+            <td>
+                ${escapeHTML(
+                    item.category
+                )}
+            </td>
+
+            <td>
+                ${escapeHTML(
+                    item.q
+                )}
+            </td>
+
+            <td>
+                ${escapeHTML(
+                    correct
+                )}
+            </td>
+
+            <td>
+
+                <button
+                    class="edit-btn"
+                    onclick="editQuestion(
+                        ${item.id}
+                    )"
+                >
+                    ✏️ Edit
+                </button>
+
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteQuestion(
+                        ${item.id}
+                    )"
+                >
+                    🗑 Delete
+                </button>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+// =======================================
+// EDIT QUESTION
+// =======================================
+
+function editQuestion(id){
+
+    const questions =
+        getQuestions();
+
+
+    const question =
+        questions.find(
+            item =>
+            item.id === id
+        );
+
+
+    if(!question){
+
+        alert(
+            "Question পাওয়া যায়নি।"
+        );
+
+        return;
+
+    }
+
+
+    editingQuestionId =
+        id;
+
+
+    document
+        .getElementById("questionCategory")
+        .value =
+        question.category;
+
+
+    document
+        .getElementById("questionText")
+        .value =
+        question.q;
+
+
+    document
+        .getElementById("option1")
+        .value =
+        question.o[0];
+
+
+    document
+        .getElementById("option2")
+        .value =
+        question.o[1];
+
+
+    document
+        .getElementById("option3")
+        .value =
+        question.o[2];
+
+
+    document
+        .getElementById("option4")
+        .value =
+        question.o[3];
+
+
+    document
+        .getElementById("correctAnswer")
+        .value =
+        question.a;
+
+
+    document
+        .getElementById("questionFormTitle")
+        .textContent =
+        "✏️ Edit MCQ";
+
+
+    document
+        .getElementById("saveQuestionBtn")
+        .textContent =
+        "💾 Update Question";
+
+
+    document
+        .getElementById("cancelEditBtn")
+        .classList
+        .remove("hidden");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+// =======================================
+// CANCEL EDIT
+// =======================================
+
+function cancelEdit(){
+
+    editingQuestionId =
+        null;
+
+
+    document
+        .getElementById("questionText")
+        .value =
+        "";
+
+
+    document
+        .getElementById("option1")
+        .value =
+        "";
+
+
+    document
+        .getElementById("option2")
+        .value =
+        "";
+
+
+    document
+        .getElementById("option3")
+        .value =
+        "";
+
+
+    document
+        .getElementById("option4")
+        .value =
+        "";
+
+
+    document
+        .getElementById("correctAnswer")
+        .value =
+        "0";
+
+
+    document
+        .getElementById("questionFormTitle")
+        .textContent =
+        "➕ Add New MCQ";
+
+
+    document
+        .getElementById("saveQuestionBtn")
+        .textContent =
+        "➕ Add Question";
+
+
+    document
+        .getElementById("cancelEditBtn")
+        .classList
+        .add("hidden");
+
+}
+
+
+// =======================================
+// DELETE QUESTION
+// =======================================
+
+function deleteQuestion(id){
+
+    const questions =
+        getQuestions();
+
+
+    const question =
+        questions.find(
+            item =>
+            item.id === id
+        );
+
+
+    if(!question){
+
+        alert(
+            "Question পাওয়া যায়নি।"
+        );
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "এই MCQ delete করতে চাও?\n\n" +
+            question.q
+        );
+
+
+    if(!confirmDelete){
+
+        return;
+
+    }
+
+
+    const updated =
+        questions.filter(
+            item =>
+            item.id !== id
+        );
+
+
+    saveQuestions(updated);
+
+
+    alert(
+        "Question successfully deleted."
+    );
+
+
+    displayQuestions();
+
+    displayQuestionStatistics();
+
+}
+
+
+// =======================================
+// QUESTION STATISTICS
+// =======================================
+
+function displayQuestionStatistics(){
+
+    const questions =
+        getQuestions();
+
+
+    let ict = 0;
+
+    let gk = 0;
+
+    let science = 0;
+
+    let bd = 0;
+
+
+    questions.forEach(item => {
+
+        if(item.category === "ICT"){
+            ict++;
+        }
+
+        else if(item.category === "GK"){
+            gk++;
+        }
+
+        else if(item.category === "Science"){
+            science++;
+        }
+
+        else if(item.category === "Bangladesh"){
+            bd++;
+        }
+
+    });
+
+
+    document
+        .getElementById("ictCount")
+        .textContent =
+        ict;
+
+
+    document
+        .getElementById("gkCount")
+        .textContent =
+        gk;
+
+
+    document
+        .getElementById("scienceCount")
+        .textContent =
+        science;
+
+
+    document
+        .getElementById("bdCount")
+        .textContent =
+        bd;
+
+}
+
+
+// =======================================
+// STUDENT PERFORMANCE
+// =======================================
+
+function displayPerformance(){
+
+    const users =
+        getUsers();
+
+
+    const box =
+        document
+        .getElementById("performanceBox");
+
+
+    if(users.length === 0){
+
+        box.innerHTML = `
+
+            <div class="empty">
+                এখনো কোনো student নেই।
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Student</th>
+
+                        <th>Quiz</th>
+
+                        <th>Questions</th>
+
+                        <th>Correct</th>
+
+                        <th>Average Score</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+    `;
+
+
+    users.forEach(user => {
+
+        const history =
+            getStudentHistory(
+                user.username
+            );
+
+
+        let questions = 0;
+
+        let correct = 0;
+
+
+        history.forEach(item => {
+
+            questions +=
+                Number(item.total)
+                ||
+                0;
+
+            correct +=
+                Number(item.correct)
+                ||
+                0;
+
+        });
+
+
+        let average = 0;
+
+
+        if(questions > 0){
+
+            average =
+                Math.round(
+                    (
+                        correct
+                        /
+                        questions
+                    )
+                    *
+                    100
+                );
+
+        }
+
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHTML(
+                        user.name
+                        ||
+                        user.username
+                    )}
+                </td>
+
+                <td>
+                    ${history.length}
+                </td>
+
+                <td>
+                    ${questions}
+                </td>
+
+                <td>
+                    ${correct}
+                </td>
+
+                <td>
+                    ${average}%
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += `
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    `;
+
+
+    box.innerHTML =
+        html;
+
+}
+
+
+// =======================================
+// ADMIN LOGOUT
+// =======================================
+
+function adminLogout(){
+
+    if(
+        !confirm(
+            "Admin panel থেকে logout করবে?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "adminLoggedIn"
+    );
+
+
+    window.location.href =
+        "admin-login.html";
+
+}
+
+
+// =======================================
+// HOME
+// =======================================
+
+function goHome(){
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+// =======================================
+// SECURITY HELPERS
+// =======================================
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+function escapeJS(value){
+
+    return String(value)
+
+        .replace(
+            /\\/g,
+            "\\\\"
+        )
+
+        .replace(
+            /'/g,
+            "\\'"
+        )
+
+        .replace(
+            /"/g,
+            '\\"'
+        );
+
+}
+
+
+// =======================================
+// INITIAL LOAD
+// =======================================
+
+displayStatistics();
+
+displayStudents();
+
+displayQuestions();
+
+displayQuestionStatistics();
+
+displayPerformance();
+
+
+// =======================================
+// CLOSE MODAL OUTSIDE CLICK
+// =======================================
+
+document
+.getElementById("studentModal")
+.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target === this
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

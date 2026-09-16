@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | Learning with Kawsar</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:1050px;
+    min-height:620px;
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+}
+
+/* LEFT */
+
+.left{
+    background:linear-gradient(145deg,#1d4ed8,#2563eb);
+    color:white;
+    padding:55px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.left h1{
+    font-size:40px;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.left p{
+    font-size:17px;
+    line-height:1.7;
+    opacity:.9;
+}
+
+.features{
+    margin-top:30px;
+}
+
+.feature{
+    margin:14px 0;
+    font-size:16px;
+}
+
+/* RIGHT */
+
+.right{
+    padding:45px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.tabs{
+    display:flex;
+    gap:10px;
+    margin-bottom:30px;
+}
+
+.tab{
+    flex:1;
+    padding:13px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:bold;
+    background:#f1f5f9;
+    color:#475569;
+}
+
+.tab.active{
+    background:#2563eb;
+    color:white;
+}
+
+.form{
+    display:none;
+}
+
+.form.active{
+    display:block;
+}
+
+h2{
+    font-size:28px;
+    color:#0f172a;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#64748b;
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    margin:15px 0 7px;
+    color:#334155;
+    font-weight:bold;
+    font-size:14px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.12);
+}
+
+.btn{
+    width:100%;
+    padding:15px;
+    margin-top:25px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+.message{
+    margin-top:15px;
+    padding:12px;
+    border-radius:8px;
+    display:none;
+    font-size:14px;
+}
+
+.success{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.error{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.profile{
+    display:none;
+}
+
+.profile-card{
+    background:#f8fafc;
+    border-radius:15px;
+    padding:25px;
+    margin-top:20px;
+}
+
+.profile-item{
+    padding:10px 0;
+    border-bottom:1px solid #e2e8f0;
+}
+
+.profile-item:last-child{
+    border-bottom:none;
+}
+
+.profile-item strong{
+    color:#334155;
+}
+
+.secondary{
+    background:#0f172a;
+}
+
+.secondary:hover{
+    background:#020617;
+}
+
+@media(max-width:800px){
+
+    .container{
+        grid-template-columns:1fr;
+    }
+
+    .left{
+        display:none;
+    }
+
+    .right{
+        padding:30px 25px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="left">
+
+        <div class="logo">📚 Learning with Kawsar</div>
+
+        <h1>Learn Today.<br>Build Your Future.</h1>
+
+        <p>
+            Practice ICT, General Knowledge, Science and Bangladesh
+            related MCQ questions and track your learning progress.
+        </p>
+
+        <div class="features">
+
+            <div class="feature">✅ Practice MCQ Questions</div>
+            <div class="feature">✅ 30 Second Quiz Timer</div>
+            <div class="feature">✅ Personal Dashboard</div>
+            <div class="feature">✅ Track Your Quiz Results</div>
+
+        </div>
+
+    </div>
+
+
+    <div class="right">
+
+        <!-- LOGIN / REGISTER -->
+
+        <div id="authSection">
+
+            <div class="tabs">
+
+                <button class="tab active" onclick="showForm('login')">
+                    Login
+                </button>
+
+                <button class="tab" onclick="showForm('register')">
+                    Register
+                </button>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <div id="loginForm" class="form active">
+
+                <h2>Welcome Back 👋</h2>
+
+                <p class="subtitle">
+                    Login to continue your learning journey.
+                </p>
+
+                <label>Username or Email</label>
+
+                <input
+                    type="text"
+                    id="loginUser"
+                    placeholder="Enter username or email"
+                >
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter password"
+                >
+
+                <button class="btn" onclick="login()">
+                    Login
+                </button>
+
+                <div id="loginMessage" class="message"></div>
+
+            </div>
+
+
+            <!-- REGISTER -->
+
+            <div id="registerForm" class="form">
+
+                <h2>Create Account ✨</h2>
+
+                <p class="subtitle">
+                    Create your free student account.
+                </p>
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="regName"
+                    placeholder="Enter your full name"
+                >
+
+                <label>Username</label>
+
+                <input
+                    type="text"
+                    id="regUsername"
+                    placeholder="Choose a username"
+                >
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="regEmail"
+                    placeholder="Enter your email"
+                >
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="regPassword"
+                    placeholder="Create a password"
+                >
+
+                <label>Confirm Password</label>
+
+                <input
+                    type="password"
+                    id="regConfirm"
+                    placeholder="Confirm password"
+                >
+
+                <button class="btn" onclick="register()">
+                    Create Account
+                </button>
+
+                <div id="registerMessage" class="message"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROFILE -->
+
+        <div id="profileSection" class="profile">
+
+            <h2>Welcome Back 🎉</h2>
+
+            <p class="subtitle">
+                Your student account is ready.
+            </p>
+
+            <div class="profile-card">
+
+                <div class="profile-item">
+                    <strong>Name:</strong>
+                    <span id="profileName"></span>
+                </div>
+
+                <div class="profile-item">
+                    <strong>Username:</strong>
+                    <span id="profileUsername"></span>
+                </div>
+
+                <div class="profile-item">
+                    <strong>Email:</strong>
+                    <span id="profileEmail"></span>
+                </div>
+
+            </div>
+
+
+            <button class="btn" onclick="goQuiz()">
+                🎯 Start Quiz
+            </button>
+
+            <button class="btn secondary" onclick="goDashboard()">
+                📊 My Dashboard
+            </button>
+
+            <button class="btn secondary" onclick="logout()">
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   GET USERS
+========================= */
+
+function getUsers(){
+
+    return JSON.parse(
+        localStorage.getItem("users") || "[]"
+    );
+
+}
+
+
+/* =========================
+   SHOW MESSAGE
+========================= */
+
+function showMessage(id,text,type){
+
+    const box=document.getElementById(id);
+
+    box.textContent=text;
+
+    box.className="message "+type;
+
+    box.style.display="block";
+
+}
+
+
+/* =========================
+   SWITCH FORM
+========================= */
+
+function showForm(type){
+
+    document
+    .getElementById("loginForm")
+    .classList.remove("active");
+
+    document
+    .getElementById("registerForm")
+    .classList.remove("active");
+
+    document
+    .querySelectorAll(".tab")
+    .forEach(tab=>tab.classList.remove("active"));
+
+
+    if(type==="login"){
+
+        document
+        .getElementById("loginForm")
+        .classList.add("active");
+
+        document
+        .querySelectorAll(".tab")[0]
+        .classList.add("active");
+
+    }
+
+    else{
+
+        document
+        .getElementById("registerForm")
+        .classList.add("active");
+
+        document
+        .querySelectorAll(".tab")[1]
+        .classList.add("active");
+
+    }
+
+}
+
+
+/* =========================
+   REGISTER
+========================= */
+
+function register(){
+
+    const name=document
+        .getElementById("regName")
+        .value.trim();
+
+    const username=document
+        .getElementById("regUsername")
+        .value.trim();
+
+    const email=document
+        .getElementById("regEmail")
+        .value.trim();
+
+    const password=document
+        .getElementById("regPassword")
+        .value;
+
+    const confirm=document
+        .getElementById("regConfirm")
+        .value;
+
+
+    if(!name || !username || !email || !password){
+
+        showMessage(
+            "registerMessage",
+            "Please fill in all fields.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if(password.length<5){
+
+        showMessage(
+            "registerMessage",
+            "Password must contain at least 5 characters.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if(password!==confirm){
+
+        showMessage(
+            "registerMessage",
+            "Passwords do not match.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    let users=getUsers();
+
+
+    const exists=users.some(user=>
+        user.username.toLowerCase()===username.toLowerCase()
+        ||
+        user.email.toLowerCase()===email.toLowerCase()
+    );
+
+
+    if(exists){
+
+        showMessage(
+            "registerMessage",
+            "Username or email already exists.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const newUser={
+
+        id:Date.now(),
+
+        name:name,
+
+        username:username,
+
+        email:email,
+
+        password:password
+
+    };
+
+
+    users.push(newUser);
+
+    localStorage.setItem(
+        "users",
+        JSON.stringify(users)
+    );
+
+
+    showMessage(
+        "registerMessage",
+        "Account created successfully! Please login.",
+        "success"
+    );
+
+
+    document.getElementById("regName").value="";
+    document.getElementById("regUsername").value="";
+    document.getElementById("regEmail").value="";
+    document.getElementById("regPassword").value="";
+    document.getElementById("regConfirm").value="";
+
+
+    setTimeout(()=>{
+        showForm("login");
+    },1200);
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function login(){
+
+    const input=document
+        .getElementById("loginUser")
+        .value.trim();
+
+    const password=document
+        .getElementById("loginPassword")
+        .value;
+
+
+    if(!input || !password){
+
+        showMessage(
+            "loginMessage",
+            "Please enter username/email and password.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const users=getUsers();
+
+
+    const user=users.find(u=>
+
+        (
+            u.username.toLowerCase()===input.toLowerCase()
+            ||
+            u.email.toLowerCase()===input.toLowerCase()
+        )
+
+        &&
+        u.password===password
+
+    );
+
+
+    if(!user){
+
+        showMessage(
+            "loginMessage",
+            "Invalid username/email or password.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "loggedIn",
+        "true"
+    );
+
+
+    localStorage.setItem(
+        "currentUser",
+        JSON.stringify(user)
+    );
+
+
+    showProfile(user);
+
+}
+
+
+/* =========================
+   SHOW PROFILE
+========================= */
+
+function showProfile(user){
+
+    document
+    .getElementById("authSection")
+    .style.display="none";
+
+    document
+    .getElementById("profileSection")
+    .style.display="block";
+
+
+    document
+    .getElementById("profileName")
+    .textContent=user.name;
+
+    document
+    .getElementById("profileUsername")
+    .textContent=user.username;
+
+    document
+    .getElementById("profileEmail")
+    .textContent=user.email;
+
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+function goQuiz(){
+
+    window.location.href="index.html";
+
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function goDashboard(){
+
+    window.location.href="dashboard.html";
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+    localStorage.removeItem("loggedIn");
+
+    localStorage.removeItem("currentUser");
+
+    location.reload();
+
+}
+
+
+/* =========================
+   AUTO LOGIN
+========================= */
+
+window.onload=function(){
+
+    const loggedIn=
+        localStorage.getItem("loggedIn");
+
+    const currentUser=
+        localStorage.getItem("currentUser");
+
+
+    if(loggedIn==="true" && currentUser){
+
+        try{
+
+            const user=JSON.parse(currentUser);
+
+            showProfile(user);
+
+        }
+
+        catch(e){
+
+            logout();
+
+        }
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>

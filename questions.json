@@ -1,0 +1,104 @@
+[
+  {
+    "category": "ICT",
+    "q": "কম্পিউটারের মস্তিষ্ক বলা হয় কোনটিকে?",
+    "o": ["RAM", "CPU", "Hard Disk", "Monitor"],
+    "a": 1
+  },
+  {
+    "category": "ICT",
+    "q": "CPU এর পূর্ণরূপ কী?",
+    "o": [
+      "Central Processing Unit",
+      "Computer Processing Unit",
+      "Central Program Unit",
+      "Control Processing Unit"
+    ],
+    "a": 0
+  },
+  {
+    "category": "ICT",
+    "q": "RAM কী ধরনের মেমোরি?",
+    "o": ["স্থায়ী", "অস্থায়ী", "বাহ্যিক", "অপটিক্যাল"],
+    "a": 1
+  },
+  {
+    "category": "ICT",
+    "q": "HTML এর পূর্ণরূপ কী?",
+    "o": [
+      "Hyper Text Markup Language",
+      "High Text Machine Language",
+      "Hyperlink Text Markup Language",
+      "Home Tool Markup Language"
+    ],
+    "a": 0
+  },
+  {
+    "category": "ICT",
+    "q": "Python কী?",
+    "o": [
+      "Operating System",
+      "Programming Language",
+      "Database",
+      "Browser"
+    ],
+    "a": 1
+  },
+
+  {
+    "category": "GK",
+    "q": "বিশ্বের সবচেয়ে বড় মহাদেশ কোনটি?",
+    "o": ["Africa", "Asia", "Europe", "North America"],
+    "a": 1
+  },
+  {
+    "category": "GK",
+    "q": "জাতিসংঘ প্রতিষ্ঠিত হয় কত সালে?",
+    "o": ["1945", "1947", "1950", "1939"],
+    "a": 0
+  },
+  {
+    "category": "GK",
+    "q": "বিশ্বের সর্বোচ্চ পর্বত কোনটি?",
+    "o": ["K2", "Everest", "Kangchenjunga", "Makalu"],
+    "a": 1
+  },
+
+  {
+    "category": "Science",
+    "q": "পানির রাসায়নিক সংকেত কী?",
+    "o": ["CO2", "O2", "H2O", "NaCl"],
+    "a": 2
+  },
+  {
+    "category": "Science",
+    "q": "সূর্যের আলো থেকে কোন ভিটামিন পাওয়া যায়?",
+    "o": ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"],
+    "a": 3
+  },
+  {
+    "category": "Science",
+    "q": "মানুষের শরীরে রক্ত পাম্প করে কোন অঙ্গ?",
+    "o": ["ফুসফুস", "হৃদপিণ্ড", "কিডনি", "যকৃত"],
+    "a": 1
+  },
+
+  {
+    "category": "Bangladesh",
+    "q": "বাংলাদেশের রাজধানী কোনটি?",
+    "o": ["চট্টগ্রাম", "ঢাকা", "সিলেট", "রাজশাহী"],
+    "a": 1
+  },
+  {
+    "category": "Bangladesh",
+    "q": "বাংলাদেশ স্বাধীন হয় কত সালে?",
+    "o": ["1947", "1952", "1971", "1975"],
+    "a": 2
+  },
+  {
+    "category": "Bangladesh",
+    "q": "বাংলাদেশের জাতীয় ফুল কোনটি?",
+    "o": ["গোলাপ", "শাপলা", "জবা", "বেলি"],
+    "a": 1
+  }
+]

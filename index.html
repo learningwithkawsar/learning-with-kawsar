@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Learning with Kawsar | ICT, GK, Science & Online Quiz</title>
+
+<meta name="description" content="Learning with Kawsar — ICT, General Knowledge, Science এবং Bangladesh বিষয়ক MCQ Quiz, শিক্ষামূলক কনটেন্ট ও অনলাইন অনুশীলন।">
+
+<meta name="keywords" content="Learning with Kawsar, ICT MCQ, GK MCQ, Science MCQ, Bangladesh MCQ, online quiz, শিক্ষা, ICT quiz">
+
+<meta name="author" content="Kawsar Hussain">
+
+<meta name="robots" content="index, follow">
+
+<meta name="googlebot" content="index, follow">
+
+<meta name="theme-color" content="#0f172a">
+
+<meta property="og:title" content="Learning with Kawsar">
+
+<meta property="og:description" content="ICT, GK, Science এবং Bangladesh বিষয়ক শিক্ষামূলক MCQ Quiz ও Learning Content.">
+
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+    color:#0f172a;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    background:#0f172a;
+    color:white;
+    padding:16px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.nav{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.nav button{
+    border:none;
+    padding:9px 13px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.login-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.dashboard-btn{
+    background:#16a34a;
+    color:white;
+}
+
+.admin-btn{
+    background:#f59e0b;
+    color:#111827;
+}
+
+.logout-btn{
+    background:#ef4444;
+    color:white;
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+    background:linear-gradient(135deg,#1d4ed8,#2563eb);
+    color:white;
+    padding:70px 5%;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:46px;
+    margin-bottom:18px;
+}
+
+.hero p{
+    max-width:750px;
+    margin:auto;
+    font-size:18px;
+    line-height:1.7;
+    opacity:.95;
+}
+
+.hero-buttons{
+    margin-top:28px;
+}
+
+.hero-btn{
+    border:none;
+    padding:14px 25px;
+    border-radius:10px;
+    margin:5px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.start-btn{
+    background:white;
+    color:#1d4ed8;
+}
+
+.login-hero-btn{
+    background:#0f172a;
+    color:white;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:35px auto;
+}
+
+
+/* ================= USER STATUS ================= */
+
+.user-status{
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    margin-bottom:30px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.user-info h3{
+    margin-bottom:5px;
+}
+
+.user-info p{
+    color:#64748b;
+}
+
+.status-badge{
+    background:#dcfce7;
+    color:#166534;
+    padding:9px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+
+/* ================= SECTION ================= */
+
+.section-title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.section-title h2{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.section-title p{
+    color:#64748b;
+}
+
+
+/* ================= CATEGORY ================= */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:40px;
+}
+
+.category{
+    background:white;
+    padding:28px 20px;
+    border-radius:18px;
+    text-align:center;
+    cursor:pointer;
+    border:2px solid transparent;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    transition:.2s;
+}
+
+.category:hover{
+    transform:translateY(-4px);
+    border-color:#2563eb;
+}
+
+.category-icon{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.category h3{
+    margin-bottom:8px;
+}
+
+.category p{
+    color:#64748b;
+    font-size:14px;
+}
+
+
+/* ================= QUIZ ================= */
+
+.quiz-box{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 5px 25px rgba(0,0,0,.08);
+    max-width:850px;
+    margin:0 auto 40px;
+}
+
+.quiz-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+.quiz-category{
+    color:#2563eb;
+    font-weight:bold;
+}
+
+.timer{
+    background:#fee2e2;
+    color:#991b1b;
+    padding:8px 14px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.progress-bg{
+    width:100%;
+    height:8px;
+    background:#e2e8f0;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:25px;
+}
+
+.progress{
+    height:100%;
+    background:#2563eb;
+    width:0%;
+    transition:.3s;
+}
+
+.question-number{
+    color:#64748b;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:22px;
+    font-weight:bold;
+    line-height:1.5;
+    margin-bottom:22px;
+}
+
+.options{
+    display:grid;
+    gap:12px;
+}
+
+.option{
+    padding:15px;
+    border:2px solid #e2e8f0;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.2s;
+    background:white;
+}
+
+.option:hover{
+    border-color:#2563eb;
+    background:#eff6ff;
+}
+
+.option.correct{
+    background:#dcfce7;
+    border-color:#16a34a;
+    color:#166534;
+}
+
+.option.wrong{
+    background:#fee2e2;
+    border-color:#dc2626;
+    color:#991b1b;
+}
+
+.next-btn{
+    width:100%;
+    margin-top:22px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.next-btn:hover{
+    background:#1d4ed8;
+}
+
+
+/* ================= RESULT ================= */
+
+.result{
+    display:none;
+    text-align:center;
+}
+
+.result-icon{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.result h2{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.score{
+    font-size:45px;
+    font-weight:bold;
+    color:#2563eb;
+    margin:15px 0;
+}
+
+.result p{
+    color:#64748b;
+    margin-bottom:20px;
+}
+
+.restart-btn{
+    border:none;
+    background:#2563eb;
+    color:white;
+    padding:13px 25px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0f172a;
+    color:#cbd5e1;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+footer h3{
+    color:white;
+    margin-bottom:8px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:14px 3%;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .nav{
+        justify-content:flex-end;
+    }
+
+    .nav button{
+        padding:7px 9px;
+        font-size:11px;
+    }
+
+    .hero{
+        padding:50px 20px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .container{
+        width:94%;
+    }
+
+    .categories{
+        grid-template-columns:1fr;
+    }
+
+    .user-status{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .quiz-box{
+        padding:20px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        📚 Learning with Kawsar
+    </div>
+
+    <div class="nav">
+
+        <button
+            class="login-btn"
+            id="loginBtn"
+            onclick="goLogin()">
+            🔐 Login
+        </button>
+
+        <button
+            class="dashboard-btn"
+            id="dashboardBtn"
+            onclick="goDashboard()"
+            style="display:none;">
+            📊 Dashboard
+        </button>
+
+        <button
+            class="admin-btn"
+            onclick="goAdmin()">
+            ⚙️ Admin
+        </button>
+
+        <button
+            class="logout-btn"
+            id="logoutBtn"
+            onclick="logout()"
+            style="display:none;">
+            🚪 Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <h1>
+        Learn Today. Build Your Future.
+    </h1>
+
+    <p>
+        Welcome to Learning with Kawsar — practice ICT,
+        General Knowledge, Science and Bangladesh related
+        MCQ questions and improve your knowledge.
+    </p>
+
+    <div class="hero-buttons">
+
+        <button
+            class="hero-btn start-btn"
+            onclick="checkLoginAndStart()">
+            🎯 Start Quiz
+        </button>
+
+        <button
+            class="hero-btn login-hero-btn"
+            id="heroLoginBtn"
+            onclick="goLogin()">
+            🔐 Login / Register
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+
+    <!-- USER STATUS -->
+
+    <div
+        class="user-status"
+        id="userStatus">
+
+        <div class="user-info">
+
+            <h3 id="statusTitle">
+                👋 Welcome, Student
+            </h3>
+
+            <p id="statusText">
+                Login to save your quiz results and track your progress.
+            </p>
+
+        </div>
+
+        <div
+            class="status-badge"
+            id="statusBadge">
+            Guest User
+        </div>
+
+    </div>
+
+
+    <!-- CATEGORY -->
+
+    <div class="section-title">
+
+        <h2>
+            📚 Choose a Category
+        </h2>
+
+        <p>
+            Select a subject and start practicing.
+        </p>
+
+    </div>
+
+
+    <div class="categories">
+
+
+        <div
+            class="category"
+            onclick="selectCategory('ICT')">
+
+            <div class="category-icon">
+                💻
+            </div>
+
+            <h3>
+                ICT
+            </h3>
+
+            <p>
+                Information & Communication Technology
+            </p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="selectCategory('GK')">
+
+            <div class="category-icon">
+                🌎
+            </div>
+
+            <h3>
+                General Knowledge
+            </h3>
+
+            <p>
+                World and general knowledge questions
+            </p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="selectCategory('Science')">
+
+            <div class="category-icon">
+                🔬
+            </div>
+
+            <h3>
+                Science
+            </h3>
+
+            <p>
+                Basic science and scientific knowledge
+            </p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="selectCategory('Bangladesh')">
+
+            <div class="category-icon">
+                🇧🇩
+            </div>
+
+            <h3>
+                Bangladesh
+            </h3>
+
+            <p>
+                Bangladesh related important questions
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= QUIZ BOX ================= -->
+
+    <div
+        class="quiz-box"
+        id="quizBox">
+
+
+        <div id="quizContent">
+
+            <div class="quiz-top">
+
+                <div
+                    class="quiz-category"
+                    id="quizCategory">
+                    Select a category
+                </div>
+
+                <div
+                    class="timer"
+                    id="timer">
+                    ⏱ 30s
+                </div>
+
+            </div>
+
+
+            <div class="progress-bg">
+
+                <div
+                    class="progress"
+                    id="progress">
+                </div>
+
+            </div>
+
+
+            <div
+                class="question-number"
+                id="questionNumber">
+                Question 0
+            </div>
+
+
+            <div
+                class="question"
+                id="question">
+                Choose a category above to start the quiz.
+            </div>
+
+
+            <div
+                class="options"
+                id="options">
+
+            </div>
+
+
+            <button
+                class="next-btn"
+                id="nextBtn"
+                onclick="nextQuestion()"
+                style="display:none;">
+                Next Question →
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div
+            class="result"
+            id="result">
+
+            <div class="result-icon">
+                🏆
+            </div>
+
+            <h2>
+                Quiz Completed!
+            </h2>
+
+            <div
+                class="score"
+                id="finalScore">
+                0%
+            </div>
+
+            <p id="resultText">
+                Your result will appear here.
+            </p>
+
+            <button
+                class="restart-btn"
+                onclick="restartQuiz()">
+                🔄 Try Again
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h3>
+        📚 Learning with Kawsar
+    </h3>
+
+    <p>
+        Learn • Practice • Improve
+    </p>
+
+    <p style="margin-top:10px;">
+        © 2026 Learning with Kawsar. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================
+   BASE QUESTIONS
+========================================= */
+
+const baseQuestions = {
+
+    ICT: [
+
+        {
+            q:"কম্পিউটারের মস্তিষ্ক বলা হয় কোনটিকে?",
+            o:["RAM","CPU","Hard Disk","Monitor"],
+            a:1
+        },
+
+        {
+            q:"HTML এর পূর্ণরূপ কী?",
+            o:[
+                "Hyper Text Markup Language",
+                "High Text Machine Language",
+                "Hyperlink Text Management Language",
+                "Home Tool Markup Language"
+            ],
+            a:0
+        },
+
+        {
+            q:"CPU এর পূর্ণরূপ কী?",
+            o:[
+                "Central Processing Unit",
+                "Computer Personal Unit",
+                "Central Program Unit",
+                "Computer Processing Utility"
+            ],
+            a:0
+        },
+
+        {
+            q:"কোনটি Volatile Memory?",
+            o:[
+                "ROM",
+                "Hard Disk",
+                "RAM",
+                "SSD"
+            ],
+            a:2
+        },
+
+        {
+            q:"Windows কী?",
+            o:[
+                "Programming Language",
+                "Operating System",
+                "Database",
+                "Antivirus"
+            ],
+            a:1
+        }
+
+    ],
+
+
+    GK: [
+
+        {
+            q:"বাংলাদেশের রাজধানী কোনটি?",
+            o:[
+                "চট্টগ্রাম",
+                "ঢাকা",
+                "সিলেট",
+                "রাজশাহী"
+            ],
+            a:1
+        },
+
+        {
+            q:"বাংলাদেশের জাতীয় ফুল কোনটি?",
+            o:[
+                "গোলাপ",
+                "শাপলা",
+                "জবা",
+                "বেলি"
+            ],
+            a:1
+        },
+
+        {
+            q:"বাংলাদেশের জাতীয় ফল কোনটি?",
+            o:[
+                "আম",
+                "কাঁঠাল",
+                "লিচু",
+                "কলা"
+            ],
+            a:1
+        },
+
+        {
+            q:"পৃথিবীর বৃহত্তম মহাসাগর কোনটি?",
+            o:[
+                "আটলান্টিক",
+                "ভারত",
+                "প্রশান্ত",
+                "আর্কটিক"
+            ],
+            a:2
+        },
+
+        {
+            q:"সূর্যের সবচেয়ে কাছের গ্রহ কোনটি?",
+            o:[
+                "শুক্র",
+                "পৃথিবী",
+                "মঙ্গল",
+                "বুধ"
+            ],
+            a:3
+        }
+
+    ],
+
+
+    Science: [
+
+        {
+            q:"পানির রাসায়নিক সংকেত কোনটি?",
+            o:[
+                "CO2",
+                "H2O",
+                "O2",
+                "NaCl"
+            ],
+            a:1
+        },
+
+        {
+            q:"মানবদেহে রক্ত পাম্প করে কোন অঙ্গ?",
+            o:[
+                "ফুসফুস",
+                "কিডনি",
+                "হৃদপিণ্ড",
+                "যকৃত"
+            ],
+            a:2
+        },
+
+        {
+            q:"উদ্ভিদ খাদ্য তৈরি করে কোন প্রক্রিয়ায়?",
+            o:[
+                "শ্বসন",
+                "পরিপাক",
+                "সালোকসংশ্লেষণ",
+                "বাষ্পীভবন"
+            ],
+            a:2
+        },
+
+        {
+            q:"মানবদেহের সবচেয়ে বড় অঙ্গ কোনটি?",
+            o:[
+                "হৃদপিণ্ড",
+                "ত্বক",
+                "ফুসফুস",
+                "যকৃত"
+            ],
+            a:1
+        },
+
+        {
+            q:"বায়ুমণ্ডলে সবচেয়ে বেশি কোন গ্যাস রয়েছে?",
+            o:[
+                "অক্সিজেন",
+                "কার্বন ডাই অক্সাইড",
+                "নাইট্রোজেন",
+                "হাইড্রোজেন"
+            ],
+            a:2
+        }
+
+    ],
+
+
+    Bangladesh: [
+
+        {
+            q:"বাংলাদেশ স্বাধীনতা লাভ করে কত সালে?",
+            o:[
+                "১৯৬৯",
+                "১৯৭০",
+                "১৯৭১",
+                "১৯৭২"
+            ],
+            a:2
+        },
+
+        {
+            q:"জাতীয় সংসদ ভবনের স্থপতি কে?",
+            o:[
+                "লুই আই কান",
+                "এফ আর খান",
+                "মুজহারুল ইসলাম",
+                "হামিদুর রহমান"
+            ],
+            a:0
+        },
+
+        {
+            q:"বাংলাদেশের জাতীয় পতাকার প্রধান দুটি রং কী?",
+            o:[
+                "লাল ও সাদা",
+                "সবুজ ও লাল",
+                "নীল ও লাল",
+                "সবুজ ও সাদা"
+            ],
+            a:1
+        },
+
+        {
+            q:"মুক্তিযুদ্ধ কত মাস স্থায়ী হয়েছিল?",
+            o:[
+                "৬ মাস",
+                "৭ মাস",
+                "৮ মাস",
+                "৯ মাস"
+            ],
+            a:3
+        },
+
+        {
+            q:"বাংলাদেশের জাতীয় কবি কে?",
+            o:[
+                "রবীন্দ্রনাথ ঠাকুর",
+                "কাজী নজরুল ইসলাম",
+                "জীবনানন্দ দাশ",
+                "জসীমউদ্দীন"
+            ],
+            a:1
+        }
+
+    ]
+
+};
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let selectedCategory = "";
+
+let quizQuestions = [];
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+let timerInterval;
+
+let timeLeft = 30;
+
+
+/* =========================================
+   GET CUSTOM QUESTIONS
+========================================= */
+
+function getCustomQuestions(){
+
+    return JSON.parse(
+        localStorage.getItem("customQuestions") || "[]"
+    );
+
+}
+
+
+/* =========================================
+   GET ALL QUESTIONS
+========================================= */
+
+function getQuestions(category){
+
+    let questions = [];
+
+    if(baseQuestions[category]){
+
+        questions = [
+            ...baseQuestions[category]
+        ];
+
+    }
+
+
+    const custom =
+        getCustomQuestions();
+
+
+    custom.forEach(item=>{
+
+        if(item.category === category){
+
+            questions.push({
+
+                id:item.id,
+
+                q:item.q,
+
+                o:item.o,
+
+                a:item.a
+
+            });
+
+        }
+
+    });
+
+
+    return questions;
+
+}
+
+
+/* =========================================
+   SHUFFLE
+========================================= */
+
+function shuffle(array){
+
+    const arr=[...array];
+
+    for(
+        let i=arr.length-1;
+        i>0;
+        i--
+    ){
+
+        const j=
+            Math.floor(
+                Math.random()*(i+1)
+            );
+
+        [arr[i],arr[j]]=
+        [arr[j],arr[i]];
+
+    }
+
+    return arr;
+
+}
+
+
+/* =========================================
+   CHECK LOGIN
+========================================= */
+
+function isLoggedIn(){
+
+    return (
+        localStorage.getItem("loggedIn")
+        ===
+        "true"
+        &&
+        localStorage.getItem("currentUser")
+    );
+
+}
+
+
+/* =========================================
+   UPDATE USER STATUS
+========================================= */
+
+function updateUserStatus(){
+
+    const loggedIn =
+        isLoggedIn();
+
+
+    const statusTitle =
+        document.getElementById(
+            "statusTitle"
+        );
+
+    const statusText =
+        document.getElementById(
+            "statusText"
+        );
+
+    const badge =
+        document.getElementById(
+            "statusBadge"
+        );
+
+
+    const loginBtn =
+        document.getElementById(
+            "loginBtn"
+        );
+
+    const dashboardBtn =
+        document.getElementById(
+            "dashboardBtn"
+        );
+
+    const logoutBtn =
+        document.getElementById(
+            "logoutBtn"
+        );
+
+    const heroLoginBtn =
+        document.getElementById(
+            "heroLoginBtn"
+        );
+
+
+    if(loggedIn){
+
+        const user =
+            JSON.parse(
+                localStorage.getItem(
+                    "currentUser"
+                )
+            );
+
+
+        statusTitle.textContent =
+            "👋 Welcome, " +
+            (
+                user.name ||
+                user.username
+            );
+
+
+        statusText.textContent =
+            "Your quiz results will be saved to your personal dashboard.";
+
+
+        badge.textContent =
+            "Logged In";
+
+
+        loginBtn.style.display="none";
+
+        dashboardBtn.style.display="inline-block";
+
+        logoutBtn.style.display="inline-block";
+
+        heroLoginBtn.style.display="none";
+
+    }
+
+    else{
+
+        statusTitle.textContent =
+            "👋 Welcome, Student";
+
+
+        statusText.textContent =
+            "Login to save your quiz results and track your progress.";
+
+
+        badge.textContent =
+            "Guest User";
+
+
+        loginBtn.style.display="inline-block";
+
+        dashboardBtn.style.display="none";
+
+        logoutBtn.style.display="none";
+
+        heroLoginBtn.style.display="inline-block";
+
+    }
+
+}
+
+
+/* =========================================
+   SELECT CATEGORY
+========================================= */
+
+function selectCategory(category){
+
+    if(!isLoggedIn()){
+
+        alert(
+            "Please Login or Register first to start the quiz."
+        );
+
+        goLogin();
+
+        return;
+
+    }
+
+
+    selectedCategory =
+        category;
+
+
+    let allQuestions =
+        getQuestions(category);
+
+
+    if(allQuestions.length===0){
+
+        alert(
+            "No questions available for this category."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Maximum 10 questions
+    */
+
+    quizQuestions =
+        shuffle(
+            allQuestions
+        ).slice(0,10);
+
+
+    currentQuestion=0;
+
+    score=0;
+
+    answered=false;
+
+
+    document.getElementById(
+        "quizCategory"
+    ).textContent =
+        category;
+
+
+    document.getElementById(
+        "result"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "quizContent"
+    ).style.display="block";
+
+
+    showQuestion();
+
+}
+
+
+/* =========================================
+   SHOW QUESTION
+========================================= */
+
+function showQuestion(){
+
+    answered=false;
+
+    clearInterval(timerInterval);
+
+    timeLeft=30;
+
+
+    document.getElementById(
+        "timer"
+    ).textContent =
+        "⏱ " + timeLeft + "s";
+
+
+    timerInterval =
+        setInterval(
+            countdown,
+            1000
+        );
+
+
+    const question =
+        quizQuestions[
+            currentQuestion
+        ];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        "Question " +
+        (currentQuestion+1) +
+        " of " +
+        quizQuestions.length;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        question.q;
+
+
+    const progress =
+        (
+            currentQuestion /
+            quizQuestions.length
+        ) * 100;
+
+
+    document.getElementById(
+        "progress"
+    ).style.width =
+        progress + "%";
+
+
+    const options =
+        document.getElementById(
+            "options"
+        );
+
+
+    options.innerHTML="";
+
+
+    question.o.forEach(
+        (option,index)=>{
+
+
+        const button =
+            document.createElement(
+                "div"
+            );
+
+
+        button.className="option";
+
+
+        button.textContent =
+            (
+                index+1
+            ) +
+            ". " +
+            option;
+
+
+        button.onclick =
+            function(){
+
+                chooseAnswer(
+                    index,
+                    button
+                );
+
+            };
+
+
+        options.appendChild(
+            button
+        );
+
+    });
+
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display="none";
+
+}
+
+
+/* =========================================
+   CHOOSE ANSWER
+========================================= */
+
+function chooseAnswer(
+    selected,
+    clickedButton
+){
+
+    if(answered){
+
+        return;
+
+    }
+
+
+    answered=true;
+
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    const question =
+        quizQuestions[
+            currentQuestion
+        ];
+
+
+    const optionButtons =
+        document.querySelectorAll(
+            ".option"
+        );
+
+
+    optionButtons.forEach(
+        (button,index)=>{
+
+            button.style.pointerEvents=
+                "none";
+
+
+            if(
+                index === question.a
+            ){
+
+                button.classList.add(
+                    "correct"
+                );
+
+            }
+
+        }
+    );
+
+
+    if(selected === question.a){
+
+        score++;
+
+    }
+
+    else{
+
+        clickedButton.classList.add(
+            "wrong"
+        );
+
+    }
+
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display="block";
+
+}
+
+
+/* =========================================
+   TIMER
+========================================= */
+
+function countdown(){
+
+    timeLeft--;
+
+
+    document.getElementById(
+        "timer"
+    ).textContent =
+        "⏱ " +
+        timeLeft +
+        "s";
+
+
+    if(timeLeft<=0){
+
+        clearInterval(
+            timerInterval
+        );
+
+
+        if(!answered){
+
+            answered=true;
+
+
+            const question =
+                quizQuestions[
+                    currentQuestion
+                ];
+
+
+            const buttons =
+                document.querySelectorAll(
+                    ".option"
+                );
+
+
+            buttons.forEach(
+                (button,index)=>{
+
+                    button.style.pointerEvents=
+                        "none";
+
+
+                    if(
+                        index === question.a
+                    ){
+
+                        button.classList.add(
+                            "correct"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            document.getElementById(
+                "nextBtn"
+            ).style.display="block";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   NEXT QUESTION
+========================================= */
+
+function nextQuestion(){
+
+    if(!answered){
+
+        return;
+
+    }
+
+
+    currentQuestion++;
+
+
+    if(
+        currentQuestion >=
+        quizQuestions.length
+    ){
+
+        finishQuiz();
+
+        return;
+
+    }
+
+
+    showQuestion();
+
+}
+
+
+/* =========================================
+   FINISH QUIZ
+========================================= */
+
+function finishQuiz(){
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    const total =
+        quizQuestions.length;
+
+
+    const percentage =
+        (
+            score /
+            total
+        ) * 100;
+
+
+    document.getElementById(
+        "quizContent"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "result"
+    ).style.display="block";
+
+
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+        percentage.toFixed(0) +
+        "%";
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        "You answered " +
+        score +
+        " out of " +
+        total +
+        " questions correctly.";
+
+
+    saveQuizHistory(
+        total,
+        score,
+        percentage
+    );
+
+}
+
+
+/* =========================================
+   SAVE QUIZ HISTORY
+========================================= */
+
+function saveQuizHistory(
+    total,
+    correct,
+    percentage
+){
+
+    const currentUser =
+        localStorage.getItem(
+            "currentUser"
+        );
+
+
+    if(!currentUser){
+
+        return;
+
+    }
+
+
+    const user =
+        JSON.parse(
+            currentUser
+        );
+
+
+    const key =
+        "quizHistory_" +
+        user.username;
+
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                key
+            ) || "[]"
+        );
+
+
+    history.push({
+
+        id:Date.now(),
+
+        user:user.username,
+
+        name:
+            user.name ||
+            user.username,
+
+        category:
+            selectedCategory,
+
+        total:total,
+
+        correct:correct,
+
+        wrong:
+            total-correct,
+
+        percentage:
+            percentage,
+
+        date:
+            new Date().toLocaleString()
+
+    });
+
+
+    localStorage.setItem(
+
+        key,
+
+        JSON.stringify(
+            history
+        )
+
+    );
+
+}
+
+
+/* =========================================
+   RESTART
+========================================= */
+
+function restartQuiz(){
+
+    selectCategory(
+        selectedCategory
+    );
+
+}
+
+
+/* =========================================
+   START QUIZ
+========================================= */
+
+function checkLoginAndStart(){
+
+    if(!isLoggedIn()){
+
+        alert(
+            "Please Login or Register first."
+        );
+
+        goLogin();
+
+        return;
+
+    }
+
+
+    document
+        .querySelector(".categories")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+function goLogin(){
+
+    window.location.href=
+        "login.html";
+
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+function goDashboard(){
+
+    window.location.href=
+        "dashboard.html";
+
+}
+
+
+/* =========================================
+   ADMIN
+========================================= */
+
+function goAdmin(){
+
+    window.location.href=
+        "admin-login.html";
+
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logout(){
+
+    localStorage.removeItem(
+        "loggedIn"
+    );
+
+    localStorage.removeItem(
+        "currentUser"
+    );
+
+    location.reload();
+
+}
+
+
+/* =========================================
+   INITIAL LOAD
+========================================= */
+
+updateUserStatus();
+
+</script>
+
+</body>
+
+</html>

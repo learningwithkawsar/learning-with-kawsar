@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login - Learning with Kawsar</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7fb;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+        .login-box {
+
+            width: 90%;
+
+            max-width: 420px;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.15);
+
+            text-align: center;
+        }
+
+        h1 {
+
+            color: #1e3a8a;
+
+            margin-bottom: 5px;
+        }
+
+        h2 {
+
+            margin-bottom: 25px;
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 13px;
+
+            margin: 8px 0;
+
+            border: 1px solid #ccc;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+        }
+
+        button {
+
+            width: 100%;
+
+            padding: 13px;
+
+            margin-top: 15px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #1e3a8a;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+
+            background: #162d6b;
+        }
+
+        .home-btn {
+
+            background: #64748b;
+
+        }
+
+        .home-btn:hover {
+
+            background: #475569;
+
+        }
+
+        #message {
+
+            margin-top: 15px;
+
+            font-weight: bold;
+
+            color: #dc2626;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-box">
+
+    <h1>Learning with Kawsar</h1>
+
+    <h2>🔐 Admin Login</h2>
+
+
+    <input
+        type="text"
+        id="username"
+        placeholder="Admin Username">
+
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Admin Password">
+
+
+    <button onclick="adminLogin()">
+
+        🔐 Login
+
+    </button>
+
+
+    <button
+        class="home-btn"
+        onclick="goHome()">
+
+        🏠 Back to Home
+
+    </button>
+
+
+    <div id="message"></div>
+
+</div>
+
+
+<script>
+
+
+function adminLogin() {
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+
+    /* Demo Admin Account */
+
+    const correctUsername = "admin";
+
+    const correctPassword = "12345";
+
+
+    if (
+        username === correctUsername &&
+        password === correctPassword
+    ) {
+
+        localStorage.setItem(
+            "adminLoggedIn",
+            "true"
+        );
+
+
+        window.location.href =
+            "admin.html";
+
+    }
+
+    else {
+
+        document.getElementById("message").textContent =
+            "❌ Username অথবা Password ভুল!";
+
+    }
+
+}
+
+
+function goHome() {
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

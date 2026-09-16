@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Dashboard | Learning with Kawsar</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+    color:#0f172a;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    background:#0f172a;
+    color:white;
+    padding:16px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.nav{
+    display:flex;
+    gap:10px;
+}
+
+.nav button{
+    border:none;
+    padding:9px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.home-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.logout-btn{
+    background:#ef4444;
+    color:white;
+}
+
+/* ================= MAIN ================= */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:35px auto;
+}
+
+/* ================= WELCOME ================= */
+
+.welcome{
+    background:linear-gradient(135deg,#1d4ed8,#2563eb);
+    color:white;
+    padding:35px;
+    border-radius:20px;
+    margin-bottom:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.welcome h1{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.welcome p{
+    opacity:.9;
+}
+
+/* ================= PROFILE ================= */
+
+.profile{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.profile h2{
+    margin-bottom:20px;
+}
+
+.profile-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.profile-item{
+    background:#f8fafc;
+    padding:18px;
+    border-radius:12px;
+}
+
+.profile-item small{
+    display:block;
+    color:#64748b;
+    margin-bottom:7px;
+}
+
+.profile-item strong{
+    font-size:16px;
+}
+
+/* ================= STATISTICS ================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.stat-card{
+    background:white;
+    padding:22px;
+    border-radius:16px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.stat-icon{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.stat-number{
+    font-size:27px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.stat-title{
+    color:#64748b;
+    font-size:14px;
+}
+
+/* ================= PERFORMANCE ================= */
+
+.section{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.section h2{
+    margin-bottom:20px;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.category{
+    border:1px solid #e2e8f0;
+    padding:20px;
+    border-radius:14px;
+}
+
+.category h3{
+    margin-bottom:12px;
+}
+
+.progress-bg{
+    width:100%;
+    height:9px;
+    background:#e2e8f0;
+    border-radius:20px;
+    overflow:hidden;
+    margin:10px 0;
+}
+
+.progress{
+    height:100%;
+    background:#2563eb;
+    width:0%;
+}
+
+.category p{
+    color:#64748b;
+    font-size:14px;
+}
+
+/* ================= ACTIONS ================= */
+
+.actions{
+    display:flex;
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.action-btn{
+    padding:13px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.quiz-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.clear-btn{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+/* ================= TABLE ================= */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#f1f5f9;
+    text-align:left;
+    padding:14px;
+    font-size:14px;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #e2e8f0;
+    font-size:14px;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.good{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.average{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.low{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    text-align:center;
+    padding:40px 20px;
+    color:#64748b;
+}
+
+.empty-icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0f172a;
+    color:#cbd5e1;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .container{
+        width:94%;
+        margin:20px auto;
+    }
+
+    header{
+        padding:14px 3%;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .nav button{
+        padding:8px 10px;
+        font-size:12px;
+    }
+
+    .welcome{
+        padding:25px;
+    }
+
+    .welcome h1{
+        font-size:24px;
+    }
+
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .category-grid{
+        grid-template-columns:1fr;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        📚 Learning with Kawsar
+    </div>
+
+    <div class="nav">
+
+        <button
+            class="home-btn"
+            onclick="goHome()">
+            🏠 Home
+        </button>
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+            🚪 Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+
+    <!-- WELCOME -->
+
+    <div class="welcome">
+
+        <h1>
+            Welcome, <span id="welcomeName">Student</span>! 👋
+        </h1>
+
+        <p>
+            Track your learning progress and improve your quiz performance.
+        </p>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div class="profile">
+
+        <h2>👤 My Profile</h2>
+
+        <div class="profile-grid">
+
+            <div class="profile-item">
+
+                <small>Full Name</small>
+
+                <strong id="userName">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <small>Username</small>
+
+                <strong id="userUsername">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <small>Email</small>
+
+                <strong id="userEmail">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🎯
+            </div>
+
+            <div
+                class="stat-number"
+                id="totalQuiz">
+                0
+            </div>
+
+            <div class="stat-title">
+                Total Quiz
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📝
+            </div>
+
+            <div
+                class="stat-number"
+                id="totalQuestions">
+                0
+            </div>
+
+            <div class="stat-title">
+                Questions
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ✅
+            </div>
+
+            <div
+                class="stat-number"
+                id="totalCorrect">
+                0
+            </div>
+
+            <div class="stat-title">
+                Correct
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ❌
+            </div>
+
+            <div
+                class="stat-number"
+                id="totalWrong">
+                0
+            </div>
+
+            <div class="stat-title">
+                Wrong
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🏆
+            </div>
+
+            <div
+                class="stat-number"
+                id="bestScore">
+                0%
+            </div>
+
+            <div class="stat-title">
+                Best Score
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- AVERAGE SCORE -->
+
+    <div class="section">
+
+        <h2>
+            📈 Overall Performance
+        </h2>
+
+        <div style="
+            font-size:40px;
+            font-weight:bold;
+            margin-bottom:10px;
+        " id="averageScore">
+            0%
+        </div>
+
+        <div class="progress-bg">
+
+            <div
+                class="progress"
+                id="overallProgress">
+            </div>
+
+        </div>
+
+        <p style="
+            color:#64748b;
+            margin-top:10px;
+        ">
+            Your average quiz score
+        </p>
+
+    </div>
+
+
+    <!-- CATEGORY PERFORMANCE -->
+
+    <div class="section">
+
+        <h2>
+            📚 Category Performance
+        </h2>
+
+
+        <div class="category-grid">
+
+
+            <!-- ICT -->
+
+            <div class="category">
+
+                <h3>💻 ICT</h3>
+
+                <div
+                    class="progress-bg">
+
+                    <div
+                        class="progress"
+                        id="ictProgress">
+                    </div>
+
+                </div>
+
+                <p id="ictText">
+                    No quiz taken
+                </p>
+
+            </div>
+
+
+            <!-- GK -->
+
+            <div class="category">
+
+                <h3>🌎 General Knowledge</h3>
+
+                <div
+                    class="progress-bg">
+
+                    <div
+                        class="progress"
+                        id="gkProgress">
+                    </div>
+
+                </div>
+
+                <p id="gkText">
+                    No quiz taken
+                </p>
+
+            </div>
+
+
+            <!-- SCIENCE -->
+
+            <div class="category">
+
+                <h3>🔬 Science</h3>
+
+                <div
+                    class="progress-bg">
+
+                    <div
+                        class="progress"
+                        id="scienceProgress">
+                    </div>
+
+                </div>
+
+                <p id="scienceText">
+                    No quiz taken
+                </p>
+
+            </div>
+
+
+            <!-- BANGLADESH -->
+
+            <div class="category">
+
+                <h3>🇧🇩 Bangladesh</h3>
+
+                <div
+                    class="progress-bg">
+
+                    <div
+                        class="progress"
+                        id="bangladeshProgress">
+                    </div>
+
+                </div>
+
+                <p id="bangladeshText">
+                    No quiz taken
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ACTIONS -->
+
+    <div class="actions">
+
+        <button
+            class="action-btn quiz-btn"
+            onclick="startQuiz()">
+            🎯 Start New Quiz
+        </button>
+
+        <button
+            class="action-btn clear-btn"
+            onclick="clearHistory()">
+            🗑️ Clear My History
+        </button>
+
+    </div>
+
+
+    <!-- QUIZ HISTORY -->
+
+    <div class="section">
+
+        <h2>
+            🕒 Quiz History
+        </h2>
+
+
+        <div
+            id="historyArea">
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📊
+                </div>
+
+                <p>
+                    You haven't completed any quiz yet.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 Learning with Kawsar
+    </p>
+
+    <p style="margin-top:8px;">
+        Learn • Practice • Improve
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* ==========================================
+   CHECK LOGIN
+========================================== */
+
+const loggedIn =
+    localStorage.getItem("loggedIn");
+
+const currentUser =
+    localStorage.getItem("currentUser");
+
+
+if(
+    loggedIn !== "true" ||
+    !currentUser
+){
+
+    window.location.href="login.html";
+
+}
+
+
+/* ==========================================
+   USER DATA
+========================================== */
+
+let user;
+
+try{
+
+    user =
+        JSON.parse(currentUser);
+
+}
+
+catch(error){
+
+    localStorage.removeItem("loggedIn");
+
+    localStorage.removeItem("currentUser");
+
+    window.location.href="login.html";
+
+}
+
+
+/* ==========================================
+   PROFILE
+========================================== */
+
+document.getElementById("welcomeName")
+    .textContent =
+    user.name || user.username;
+
+document.getElementById("userName")
+    .textContent =
+    user.name || "-";
+
+document.getElementById("userUsername")
+    .textContent =
+    user.username || "-";
+
+document.getElementById("userEmail")
+    .textContent =
+    user.email || "-";
+
+
+/* ==========================================
+   GET HISTORY
+========================================== */
+
+function getHistory(){
+
+    return JSON.parse(
+
+        localStorage.getItem(
+            "quizHistory_" + user.username
+        ) || "[]"
+
+    );
+
+}
+
+
+/* ==========================================
+   CALCULATE DASHBOARD
+========================================== */
+
+function loadDashboard(){
+
+    const history =
+        getHistory();
+
+
+    /* TOTAL QUIZ */
+
+    const totalQuiz =
+        history.length;
+
+
+    document.getElementById("totalQuiz")
+        .textContent =
+        totalQuiz;
+
+
+    /* TOTAL QUESTIONS */
+
+    let totalQuestions=0;
+
+    let totalCorrect=0;
+
+    let totalWrong=0;
+
+    let totalPercentage=0;
+
+    let bestScore=0;
+
+
+    history.forEach(item=>{
+
+        totalQuestions +=
+            Number(item.total) || 0;
+
+        totalCorrect +=
+            Number(item.correct) || 0;
+
+        totalWrong +=
+            Number(item.wrong) || 0;
+
+        totalPercentage +=
+            Number(item.percentage) || 0;
+
+
+        if(
+            Number(item.percentage) > bestScore
+        ){
+
+            bestScore =
+                Number(item.percentage);
+
+        }
+
+    });
+
+
+    document.getElementById("totalQuestions")
+        .textContent =
+        totalQuestions;
+
+
+    document.getElementById("totalCorrect")
+        .textContent =
+        totalCorrect;
+
+
+    document.getElementById("totalWrong")
+        .textContent =
+        totalWrong;
+
+
+    document.getElementById("bestScore")
+        .textContent =
+        bestScore.toFixed(0) + "%";
+
+
+    /* AVERAGE */
+
+    let average=0;
+
+    if(totalQuiz>0){
+
+        average =
+            totalPercentage / totalQuiz;
+
+    }
+
+
+    document.getElementById("averageScore")
+        .textContent =
+        average.toFixed(0) + "%";
+
+
+    document.getElementById("overallProgress")
+        .style.width =
+        Math.min(average,100) + "%";
+
+
+    /* CATEGORY */
+
+    loadCategory(
+        history,
+        "ICT",
+        "ictProgress",
+        "ictText"
+    );
+
+    loadCategory(
+        history,
+        "GK",
+        "gkProgress",
+        "gkText"
+    );
+
+    loadCategory(
+        history,
+        "Science",
+        "scienceProgress",
+        "scienceText"
+    );
+
+    loadCategory(
+        history,
+        "Bangladesh",
+        "bangladeshProgress",
+        "bangladeshText"
+    );
+
+
+    /* HISTORY */
+
+    loadHistory(history);
+
+}
+
+
+/* ==========================================
+   CATEGORY PERFORMANCE
+========================================== */
+
+function loadCategory(
+    history,
+    category,
+    progressId,
+    textId
+){
+
+    const data =
+        history.filter(
+            item =>
+            item.category === category
+        );
+
+
+    if(data.length===0){
+
+        document.getElementById(progressId)
+            .style.width="0%";
+
+        document.getElementById(textId)
+            .textContent=
+            "No quiz taken";
+
+        return;
+
+    }
+
+
+    let total=0;
+
+
+    data.forEach(item=>{
+
+        total +=
+            Number(item.percentage) || 0;
+
+    });
+
+
+    const average =
+        total / data.length;
+
+
+    document.getElementById(progressId)
+        .style.width =
+        Math.min(average,100) + "%";
+
+
+    document.getElementById(textId)
+        .textContent =
+        "Average Score: " +
+        average.toFixed(0) +
+        "% • " +
+        data.length +
+        " quiz";
+
+
+}
+
+
+/* ==========================================
+   HISTORY TABLE
+========================================== */
+
+function loadHistory(history){
+
+    const area =
+        document.getElementById("historyArea");
+
+
+    if(history.length===0){
+
+        area.innerHTML=`
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📊
+                </div>
+
+                <p>
+                    You haven't completed any quiz yet.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* NEWEST FIRST */
+
+    const sorted =
+        [...history].reverse();
+
+
+    let html=`
+
+        <div class="table-wrapper">
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+            <th>#</th>
+
+            <th>Category</th>
+
+            <th>Questions</th>
+
+            <th>Correct</th>
+
+            <th>Wrong</th>
+
+            <th>Score</th>
+
+            <th>Date</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+    `;
+
+
+    sorted.forEach(
+        (item,index)=>{
+
+
+        const score =
+            Number(item.percentage) || 0;
+
+
+        let badgeClass="low";
+
+
+        if(score>=80){
+
+            badgeClass="good";
+
+        }
+
+        else if(score>=50){
+
+            badgeClass="average";
+
+        }
+
+
+        html +=`
+
+            <tr>
+
+                <td>
+                    ${index+1}
+                </td>
+
+                <td>
+                    <strong>
+                        ${item.category}
+                    </strong>
+                </td>
+
+                <td>
+                    ${item.total}
+                </td>
+
+                <td>
+                    <span
+                        style="color:#16a34a;font-weight:bold;">
+                        ${item.correct}
+                    </span>
+                </td>
+
+                <td>
+                    <span
+                        style="color:#dc2626;font-weight:bold;">
+                        ${item.wrong}
+                    </span>
+                </td>
+
+                <td>
+
+                    <span
+                        class="badge ${badgeClass}">
+
+                        ${score.toFixed(0)}%
+
+                    </span>
+
+                </td>
+
+                <td>
+                    ${item.date}
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html +=`
+
+        </tbody>
+
+        </table>
+
+        </div>
+
+    `;
+
+
+    area.innerHTML=html;
+
+}
+
+
+/* ==========================================
+   START QUIZ
+========================================== */
+
+function startQuiz(){
+
+    window.location.href="index.html";
+
+}
+
+
+/* ==========================================
+   HOME
+========================================== */
+
+function goHome(){
+
+    window.location.href="index.html";
+
+}
+
+
+/* ==========================================
+   CLEAR HISTORY
+========================================== */
+
+function clearHistory(){
+
+    const history =
+        getHistory();
+
+
+    if(history.length===0){
+
+        alert(
+            "There is no quiz history to clear."
+        );
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete all your quiz history?"
+        );
+
+
+    if(!confirmDelete){
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "quizHistory_" + user.username
+    );
+
+
+    loadDashboard();
+
+
+    alert(
+        "Your quiz history has been cleared."
+    );
+
+}
+
+
+/* ==========================================
+   LOGOUT
+========================================== */
+
+function logout(){
+
+    localStorage.removeItem("loggedIn");
+
+    localStorage.removeItem("currentUser");
+
+    window.location.href="login.html";
+
+}
+
+
+/* ==========================================
+   LOAD
+========================================== */
+
+loadDashboard();
+
+</script>
+
+
+</body>
+</html>
