@@ -3,11 +3,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/</loc>
+        <loc>https://learningwithkawsar.github.io/learning-with-kawsar/</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/login.html</loc>
+        <loc>https://learningwithkawsar.github.io/learning-with-kawsar/login.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learningwithkawsar.github.io/learning-with-kawsar/dashboard.html</loc>
     </url>
 
 </urlset>
